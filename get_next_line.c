@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alisharu <marvin@42.fr>                    #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-05-11 10:58:19 by alisharu          #+#    #+#             */
-/*   Updated: 2025-05-11 10:58:19 by alisharu         ###   ########.fr       */
+/*   Created: 2025-05-11 10:57:50 by alisharu          #+#    #+#             */
+/*   Updated: 2025-05-11 10:57:50 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
-#include <limits.h>
+#include "get_next_line.h"
 
 char	*future_next_line(char *line)
 {
@@ -96,26 +95,42 @@ void	ft_get_line(int fd, char **line)
 
 char	*get_next_line(int fd)
 {
-	static char	*line[OPEN_MAX] = {0};
+	static char	*line = 0;
 	char		*curr_line;
 
 	curr_line = NULL;
 	if ((fd < 3 && fd != 0) || BUFFER_SIZE <= 0)
 		return (NULL);
-	ft_get_line(fd, &line[fd]);
-	if (!line[fd] || (line[fd] && !*line[fd]))
+	ft_get_line(fd, &line);
+	if (!line || (line && !*line))
 	{
-		free (line[fd]);
-		line[fd] = NULL;
+		free (line);
+		line = NULL;
 		return (NULL);
 	}
-	curr_line = ft_cut_str(line[fd]);
+	curr_line = ft_cut_str(line);
 	if (curr_line && !curr_line[0])
 	{
 		free (curr_line);
 		curr_line = NULL;
 		return (NULL);
 	}
-	line[fd] = future_next_line(line[fd]);
+	line = future_next_line(line);
 	return (curr_line);
 }
+
+// #include <stdio.h>
+// int main(){
+// 	int		fd = 0;
+// 	char	*str;
+// 	int i = 0;
+
+// 	fd = open("foo.txt", O_RDWR);
+// 	while (i < 5)
+// 	{
+// 		str = get_next_line(fd);
+// 		printf("%s", str);
+// 		free(str);
+// 		i++;
+// 	}
+// }

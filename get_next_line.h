@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alisharu <alisharu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alisharu <marvin@42.fr>                    #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/01 17:54:50 by alisharu          #+#    #+#             */
-/*   Updated: 2025/02/05 17:22:11 by alisharu         ###   ########.fr       */
+/*   Created: 2025-05-11 10:57:42 by alisharu          #+#    #+#             */
+/*   Updated: 2025-05-11 10:57:42 by alisharu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 40
 # endif
 
 # include <stdlib.h>
