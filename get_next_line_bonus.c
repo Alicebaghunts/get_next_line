@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
-#include <limits.h>
 
 char	*future_next_line(char *line)
 {
